@@ -2,12 +2,22 @@
 
 namespace nickwelsh\Fennel;
 
-use nickwelsh\Fennel\Commands\FennelCommand;
+use nickwelsh\Fennel\Services\FennelService;
+use nickwelsh\Fennel\View\Components\Image;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class FennelServiceProvider extends PackageServiceProvider
 {
+    public function register(): void
+    {
+        parent::register();
+
+        $this->app->bind(FennelService::class, function () {
+            return new FennelService;
+        });
+    }
+
     public function configurePackage(Package $package): void
     {
         /*
@@ -18,8 +28,9 @@ class FennelServiceProvider extends PackageServiceProvider
         $package
             ->name('fennel')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_fennel_table')
-            ->hasCommand(FennelCommand::class);
+            ->hasRoute('web')
+            ->hasViews('fennel')
+            ->hasViewComponents('fennel', Image::class);
+
     }
 }

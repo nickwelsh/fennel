@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="PHPStan" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/vendor/bin/phpstan" scriptParameters="analyse --memory-limit=4G">
+    <CommandLine parameters="-d xdebug.mode=off" workingDirectory="$PROJECT_DIR$" />
+    <method v="2" />
+  </configuration>
+</component>

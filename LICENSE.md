@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) nickwelsh <nick@nickmedia.productions>
+Copyright (c) 2025 Nick Welsh <nick@nickmedia.productions>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
