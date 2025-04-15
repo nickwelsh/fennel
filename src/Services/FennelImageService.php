@@ -55,10 +55,10 @@ class FennelImageService
             $path = public_path("images/$path");
             throw_unless(File::exists($path), FileNotFoundException::class);
 
-            $this->image = new ImageManager(Driver::class)->read($path);
+            $this->image = (new ImageManager(Driver::class))->read($path);
         } else {
             throw_unless(Storage::disk(Config::string('fennel.disk'))->exists($path), FileNotFoundException::class);
-            $this->image = new ImageManager(Driver::class)->read(Storage::disk(Config::string('fennel.disk'))->get($path));
+            $this->image = (new ImageManager(Driver::class))->read(Storage::disk(Config::string('fennel.disk'))->get($path));
         }
 
         $this->dpr = 1;
