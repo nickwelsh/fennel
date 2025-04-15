@@ -2,9 +2,9 @@
 
 namespace nickwelsh\Fennel;
 
+use nickwelsh\Fennel\Commands\FennelCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use nickwelsh\Fennel\Commands\FennelCommand;
 
 class FennelServiceProvider extends PackageServiceProvider
 {
