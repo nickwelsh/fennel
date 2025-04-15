@@ -31,11 +31,7 @@ class FennelImageService
 {
     private string $path;
 
-    public ImageInterface $image {
-        get {
-            return $this->image;
-        }
-    }
+    private ImageInterface $image;
 
     private int $dpr;
 
@@ -47,18 +43,6 @@ class FennelImageService
     private string $position;
 
     private string $background;
-
-    public int $imageWidth {
-        get {
-            return $this->image->width();
-        }
-    }
-
-    public int $imageHeight {
-        get {
-            return $this->image->height();
-        }
-    }
 
     /**
      * @throws Throwable
@@ -82,6 +66,12 @@ class FennelImageService
         $this->urlParameters = [];
         $this->background = '#ffffff';
 
+    }
+
+    // region: Getters
+    public function getImage(): ImageInterface
+    {
+        return $this->image;
     }
 
     // region: Config

@@ -255,10 +255,10 @@ class ImageController extends Controller
 
         $args = [];
         if (! is_null($width)) {
-            $args['width'] = min($width, $image->imageWidth);
+            $args['width'] = min($width, $image->getImage()->width());
         }
         if (! is_null($height)) {
-            $args['height'] = min($height, $image->imageHeight);
+            $args['height'] = min($height, $image->getImage()->height());
         }
 
         switch ($scale) {
@@ -266,13 +266,13 @@ class ImageController extends Controller
                 $image->scaleDown(...$args);
                 break;
             case ImageFitOption::Contain:
-                $image->contain(width: min($width ?? $image->imageWidth, $image->imageWidth), height: min($height ?? $image->imageHeight, $image->imageHeight));
+                $image->contain(width: min($width ?? $image->getImage()->width(), $image->getImage()->width()), height: min($height ?? $image->getImage()->height(), $image->getImage()->height()));
                 break;
             case ImageFitOption::Cover:
                 $image->cover(...$args);
                 break;
             case ImageFitOption::Crop:
-                $image->crop(width: min($width, $image->imageWidth), height: min($height, $image->imageHeight));
+                $image->crop(width: min($width, $image->getImage()->width()), height: min($height, $image->getImage()->height()));
                 break;
             case ImageFitOption::Pad:
                 $image->pad(...$args);

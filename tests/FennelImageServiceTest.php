@@ -46,50 +46,50 @@ it('returns a valid FennelImageService object when file exists', function () {
 it('trims the top of the image', function () {
     $this->service->trimTop(100);
 
-    expect($this->service->imageWidth)->toBe($this->imageWidth);
-    expect($this->service->imageHeight)->toBe($this->imageHeight - 100);
+    expect($this->service->getImage()->width())->toBe($this->imageWidth);
+    expect($this->service->getImage()->height())->toBe($this->imageHeight - 100);
 });
 
 it('trims the right of the image', function () {
     $this->service->trimRight(100);
 
-    expect($this->service->imageWidth)->toBe($this->imageWidth - 100);
-    expect($this->service->imageHeight)->toBe($this->imageHeight);
+    expect($this->service->getImage()->width())->toBe($this->imageWidth - 100);
+    expect($this->service->getImage()->height())->toBe($this->imageHeight);
 });
 
 it('trims the bottom of the image', function () {
     $this->service->trimBottom(100);
 
-    expect($this->service->imageWidth)->toBe($this->imageWidth);
-    expect($this->service->imageHeight)->toBe($this->imageHeight - 100);
+    expect($this->service->getImage()->width())->toBe($this->imageWidth);
+    expect($this->service->getImage()->height())->toBe($this->imageHeight - 100);
 });
 
 it('trims the left of the image', function () {
     $this->service->trimLeft(100);
 
-    expect($this->service->imageWidth)->toBe($this->imageWidth - 100);
-    expect($this->service->imageHeight)->toBe($this->imageHeight);
+    expect($this->service->getImage()->width())->toBe($this->imageWidth - 100);
+    expect($this->service->getImage()->height())->toBe($this->imageHeight);
 });
 
 it('trims the width of the image', function () {
     $this->service->trimWidth(100);
 
-    expect($this->service->imageWidth)->toBe(100);
-    expect($this->service->imageHeight)->toBe($this->imageHeight);
+    expect($this->service->getImage()->width())->toBe(100);
+    expect($this->service->getImage()->height())->toBe($this->imageHeight);
 });
 
 it('trims the height of the image', function () {
     $this->service->trimHeight(100);
 
-    expect($this->service->imageWidth)->toBe($this->imageWidth);
-    expect($this->service->imageHeight)->toBe(100);
+    expect($this->service->getImage()->width())->toBe($this->imageWidth);
+    expect($this->service->getImage()->height())->toBe(100);
 });
 
 it('trims the top, right, bottom, and left of the image', function () {
     $this->service->trim(100, 100, 100, 100);
 
-    expect($this->service->imageWidth)->toBe($this->imageWidth - 200);
-    expect($this->service->imageHeight)->toBe($this->imageHeight - 200);
+    expect($this->service->getImage()->width())->toBe($this->imageWidth - 200);
+    expect($this->service->getImage()->height())->toBe($this->imageHeight - 200);
 });
 
 it('trims the edges automatically', function () {
@@ -98,15 +98,15 @@ it('trims the edges automatically', function () {
     // Removes border areas of the image on all sides that have a similar color.
     // We have a black square in the center of the image, which is a white
     // background. We should be left with the black square, plus 1px.
-    expect($this->service->imageWidth)->toBe($this->squareSize + 1);
-    expect($this->service->imageHeight)->toBe($this->squareSize + 1);
+    expect($this->service->getImage()->width())->toBe($this->squareSize + 1);
+    expect($this->service->getImage()->height())->toBe($this->squareSize + 1);
 });
 
 it('can rotate the image', function () {
     $this->service->rotate(90);
 
-    expect($this->service->imageWidth)->toBe($this->imageHeight);
-    expect($this->service->imageHeight)->toBe($this->imageWidth);
+    expect($this->service->getImage()->width())->toBe($this->imageHeight);
+    expect($this->service->getImage()->height())->toBe($this->imageWidth);
 });
 
 it('can flip the image horizontally', function () {
@@ -114,7 +114,7 @@ it('can flip the image horizontally', function () {
     $this->service->flipHorizontal();
 
     // Get the Intervention ImageInterface instance.
-    $image = $this->service->image;
+    $image = $this->service->getImage();
 
     // Calculate the starting point for the top-right 100×100 region.
     $startX = $this->imageWidth - $this->squareSize;
@@ -141,7 +141,7 @@ it('can flip the image vertically', function () {
     $this->service->flipVertical();
 
     // Get the Intervention ImageInterface instance.
-    $image = $this->service->image;
+    $image = $this->service->getImage();
 
     // Calculate the starting point for the top-right 100×100 region.
     $startX = 0;
