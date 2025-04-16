@@ -1,6 +1,10 @@
 # Changelog
 
-## v0.1.0-beta – Initial Beta Release
+## [v0.1.1-beta](https://github.com/nickwelsh/fennel/releases/tag/v0.1.1-beta) - 2025-04-16
+### Fixed
+- `anim` flag was previously ignored when rendering image URLs. It now correctly applies the animation parameter.
+
+## [v0.1.0-beta](https://github.com/nickwelsh/fennel/releases/tag/v0.1.0-beta) – Initial Beta Release
 
 This is the first beta release of **Fennel**,
 a self-hostable image optimization layer that closely mirrors Cloudflare's Image Resizing API.
