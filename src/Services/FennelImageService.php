@@ -95,7 +95,7 @@ class FennelImageService
     {
         $this->addQueryString('anim', $shouldAnimate);
 
-        if ($this->image->isAnimated() && ! $shouldAnimate) {
+        if ($this->image->isAnimated() && $shouldAnimate === false) {
             $this->image->removeAnimation();
         }
 
