@@ -114,12 +114,12 @@ class ImageController extends Controller
             $path = public_path("images/$path");
             abort_unless(File::exists($path), 404);
 
-            return new ImageManager(Driver::class)->read($path);
+            return (new ImageManager(Driver::class))->read($path);
         }
 
         abort_unless(Storage::disk(Config::string('fennel.disk'))->exists($path), 404);
 
-        return new ImageManager(Driver::class)->read(Storage::disk(Config::string('fennel.disk'))->get($path));
+        return (new ImageManager(Driver::class))->read(Storage::disk(Config::string('fennel.disk'))->get($path));
     }
 
     // endregion
@@ -138,7 +138,8 @@ class ImageController extends Controller
     private function config(FennelImageService $image, array $options): FennelImageService
     {
         if (Arr::has($options, 'anim')) {
-            $shouldAnim = (bool) Arr::get($options, 'anim', Config::boolean('fennel.preserve_animation_frames'));
+            $animProp = Arr::get($options, 'anim', Config::boolean('fennel.preserve_animation_frames'));
+            $shouldAnim = ! in_array($animProp, ['no', 'off', '0', 0, false, 'false', null], true);
             $image->animate($shouldAnim);
         }
 
